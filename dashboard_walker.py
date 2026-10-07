@@ -276,13 +276,19 @@ def get_api_key():
         key = st.session_state["gemini_api_key"]
     return key.strip()
 
-def generate_arbitral_response(prompt_text, system_instruction="", model_name="gemini-flash-latest"):
+def generate_arbitral_response(prompt_text, system_instruction="", model_name="gemini-3.1-flash-lite"):
     """Execute AI completion with Google Gemini with multi-model fallback."""
     api_key = get_api_key()
     if not api_key:
         return None, "⚠️ Chave de API do Gemini não configurada. Por favor, adicione sua GEMINI_API_KEY no arquivo .env ou na aba 'Configuração'."
 
-    candidate_models = [model_name, "gemini-flash-latest", "gemini-2.5-flash", "gemini-pro-latest", "gemini-2.5-pro"]
+    candidate_models = [
+        model_name,
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash-lite",
+        "gemini-flash-latest",
+        "gemini-3.6-flash"
+    ]
     # Remove duplicates while preserving order
     seen = set()
     models_to_try = [m for m in candidate_models if not (m in seen or seen.add(m))]
@@ -960,7 +966,7 @@ with tab_config:
 
         model_choice = st.selectbox(
             "Modelo Gemini Selecionado:",
-            ["gemini-flash-latest", "gemini-2.5-flash", "gemini-pro-latest", "gemini-2.5-pro"],
+            ["gemini-3.1-flash-lite", "gemini-3.5-flash-lite", "gemini-flash-latest", "gemini-3.6-flash"],
             index=0
         )
 
