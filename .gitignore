@@ -1,0 +1,26 @@
+# Environment Variables & Secrets
+.env
+.env.local
+*.env
+secrets.toml
+.streamlit/secrets.toml
+
+# Python cache & virtualenvs
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+ENV/
+
+# Obsidian temporary files & workspace
+.obsidian/workspace*
+.obsidian/cache/
+.trash/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+desktop.ini
